@@ -22,7 +22,7 @@ int main(int argc, char * argv[]) {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-    GLFWwindow* mWindow = glfwCreateWindow(mWidth, mHeight, "GL4Cookbook", nullptr, nullptr);
+    GLFWwindow* mWindow = glfwCreateWindow(mWidth, mHeight, "Render", nullptr, nullptr);
 
     if (mWindow == nullptr) {
         std::cout << "Failed to create GLFW window" << std::endl;
