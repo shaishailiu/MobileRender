@@ -6,3 +6,4 @@ syntax:glob # Beware: globs are not rooted but matches in any dir - don't make t
 
 # Where all generated stuff should go:
 build
+platform/ios/render/libs
