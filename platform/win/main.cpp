@@ -1,19 +1,22 @@
 // System Headers
-#include <glad/glad.h>
+#include "gl.h"
 #include <GLFW/glfw3.h>
 
 // STL
 #include <iostream>
 #include <cstdlib>
 
-#include "core/core.h"
+#include "gfx/gfx.h"
 
 int mWidth = 800;
 int mHeight = 600;
 
 int main(int argc, char * argv[]) {
-
-    showRender();
+#ifdef WIN32
+    gfxInit("win");
+#elif
+    gfxInit("osx");
+#endif
     //
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -40,6 +43,7 @@ int main(int argc, char * argv[]) {
     int width, height;
     glfwGetFramebufferSize(mWindow, &width, &height);
     glViewport(0, 0, width, height);
+    gfxResize(width, height);
 
     // Rendering Loop
     while (!glfwWindowShouldClose(mWindow)) {
@@ -49,6 +53,7 @@ int main(int argc, char * argv[]) {
         // Background Fill Color
         glClearColor(1.0f, 0.25f, 0.25f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        gfxTick();
 
         // Flip Buffers and Draw
         glfwSwapBuffers(mWindow);
