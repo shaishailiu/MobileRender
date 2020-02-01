@@ -7,3 +7,8 @@ syntax:glob # Beware: globs are not rooted but matches in any dir - don't make t
 # Where all generated stuff should go:
 build
 platform/ios/render/libs
+platform/android/.gradle
+platform/android/.idea
+platform/android/app/.cxx
+platform/android/app/build
+.vscode
