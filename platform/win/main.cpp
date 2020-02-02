@@ -12,12 +12,6 @@ int mWidth = 800;
 int mHeight = 600;
 
 int main(int argc, char * argv[]) {
-#ifdef WIN32
-    gfxInit("win");
-#elif
-    gfxInit("osx");
-#endif
-    //
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
@@ -37,7 +31,13 @@ int main(int argc, char * argv[]) {
 
     // Load OpenGL Functions
     gladLoadGL();
-    std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
+    //std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
+
+#ifdef WIN32
+    gfxInit("win");
+#elif
+    gfxInit("osx");
+#endif
 
     // Viewport
     int width, height;

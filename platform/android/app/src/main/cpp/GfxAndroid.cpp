@@ -28,6 +28,7 @@
 #include <string>
 
 #include "core/core.h"
+#include "gfx/gfx.h"
 
 #define  LOG_TAG    "libgl2jni"
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
@@ -125,10 +126,12 @@ GLuint gProgram;
 GLuint gvPositionHandle;
 
 bool setupGraphics(int w, int h) {
+    /*
     printGLString("Version", GL_VERSION);
     printGLString("Vendor", GL_VENDOR);
     printGLString("Renderer", GL_RENDERER);
     printGLString("Extensions", GL_EXTENSIONS);
+     */
 
     LOGI("setupGraphics(%d, %d)", w, h);
     gProgram = createProgram(gVertexShader, gFragmentShader);
@@ -151,7 +154,7 @@ const GLfloat gTriangleVertices[] = { 0.0f, 0.5f, -0.5f, -0.5f,
 
 void renderFrame() {
     std::string str = getRenderInfo();
-    LOGI("so: %s \n", str.c_str());
+    //LOGI("so: %s \n", str.c_str());
     /*
     static float grey;
     grey += 0.01f;
@@ -178,16 +181,26 @@ void renderFrame() {
 }
 
 extern "C" {
-    JNIEXPORT void JNICALL Java_me_mecg_render_GL2JNILib_init(JNIEnv * env, jobject obj,  jint width, jint height);
+    JNIEXPORT void JNICALL Java_me_mecg_render_GL2JNILib_init(JNIEnv * env, jobject obj);
     JNIEXPORT void JNICALL Java_me_mecg_render_GL2JNILib_step(JNIEnv * env, jobject obj);
+    JNIEXPORT void JNICALL Java_me_mecg_render_GL2JNILib_resize(JNIEnv * env, jobject obj,  jint width, jint height);
 };
 
-JNIEXPORT void JNICALL Java_me_mecg_render_GL2JNILib_init(JNIEnv * env, jobject obj,  jint width, jint height)
+JNIEXPORT void JNICALL Java_me_mecg_render_GL2JNILib_init(JNIEnv * env, jobject obj)
 {
-    setupGraphics(width, height);
+    //setupGraphics(width, height)
+    gfxInit("Android");
 }
 
 JNIEXPORT void JNICALL Java_me_mecg_render_GL2JNILib_step(JNIEnv * env, jobject obj)
 {
     renderFrame();
+    gfxTick();
 }
+
+JNIEXPORT void JNICALL Java_me_mecg_render_GL2JNILib_resize(JNIEnv * env, jobject obj,  jint width, jint height)
+{
+    setupGraphics(width, height);
+    gfxResize(width,height);
+}
+

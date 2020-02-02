@@ -329,11 +329,11 @@ class GL2JNIView extends GLSurfaceView {
         }
 
         public void onSurfaceChanged(GL10 gl, int width, int height) {
-            GL2JNILib.init(width, height);
+            GL2JNILib.resize(width, height);
         }
 
         public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-            // Do nothing.
+            GL2JNILib.init();
         }
     }
 }
