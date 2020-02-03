@@ -35,7 +35,7 @@ int main(int argc, char * argv[]) {
 
 #ifdef WIN32
     gfxInit("win");
-#elif
+#else
     gfxInit("osx");
 #endif
 
