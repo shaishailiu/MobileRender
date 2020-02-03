@@ -194,7 +194,7 @@ JNIEXPORT void JNICALL Java_me_mecg_render_GL2JNILib_init(JNIEnv * env, jobject 
 
 JNIEXPORT void JNICALL Java_me_mecg_render_GL2JNILib_step(JNIEnv * env, jobject obj)
 {
-    renderFrame();
+    //renderFrame();
     gfxTick();
 }
 

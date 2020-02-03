@@ -51,8 +51,8 @@ int main(int argc, char * argv[]) {
             glfwSetWindowShouldClose(mWindow, true);
 
         // Background Fill Color
-        glClearColor(1.0f, 0.25f, 0.25f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        //glClearColor(1.0f, 0.25f, 0.25f, 1.0f);
+        //glClear(GL_COLOR_BUFFER_BIT);
         gfxTick();
 
         // Flip Buffers and Draw

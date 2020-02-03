@@ -15,7 +15,7 @@ void gfxInit(std::string info) {
     printGLString("Extensions", GL_EXTENSIONS);
 }
 void gfxResize(int w, int h) {
-    printf("engin resize : %d,%d \n", w, h);
+    Log("engin resize : %d,%d \n", w, h);
 }
 void gfxTick() {
     glClearColor(1.0f, 0.25f, 1.25f, 1.0f);
