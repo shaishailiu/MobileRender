@@ -55,15 +55,19 @@
 -(void)initContex
 {
     _gfxIOS = [GfxIOS new];
-    [_gfxIOS showLibRender];
     
-    _eaglContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
+    
+    _eaglContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     [EAGLContext setCurrentContext:_eaglContext];
+    
+    [_gfxIOS inits];
     
     _eaglLayer = (CAEAGLLayer*)self.layer;
     _eaglLayer.frame = self.frame;
     _eaglLayer.opaque = YES;
     _eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],kEAGLDrawablePropertyRetainedBacking,kEAGLColorFormatRGBA8,kEAGLDrawablePropertyColorFormat, nil];
+    
+    [_gfxIOS resize:self.frame.size.width*2 :self.frame.size.height*2];
     
     glGenRenderbuffers(1, &_colorBufferRender);
     glBindRenderbuffer(GL_RENDERBUFFER, _colorBufferRender);
@@ -77,7 +81,8 @@
                               GL_RENDERBUFFER,
                               _colorBufferRender);
     
-    glClearColor(0, 1, 0, 1.0f);
+    [_gfxIOS tick];
+    glClearColor(1.0, 0.25, 0.25, 1.0f);
     //NSString* str = [_gfxIOS getHelloWorld];
     //NSLog(@"%@",str);
 

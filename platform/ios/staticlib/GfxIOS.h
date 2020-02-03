@@ -2,8 +2,8 @@
 
 @interface GfxIOS : NSObject
 
-- (NSString*)getHelloWorld;
-- (void *)clearColor;
-- (void *)showLibRender;
+- (void)inits;
+- (void)resize :(int) width :(int) height;
+- (void)tick;
 
 @end

@@ -1,21 +1,18 @@
 #import "GfxIOS.h"
-#include "core/core.h"
+#include "gfx/gfx.h"
 
 @implementation GfxIOS
 
-- (NSString*)getHelloWorld
-{
-  NSString *text = @"addd";//[NSString stringWithUTF8String: helloWorld().c_str()];
-  return text;
-}
-- (void *)clearColor
-{
-  
+- (void)resize:(int)width :(int)height { 
+    gfxResize(width, height);
 }
 
-- (void *)showLibRender
-{
-  showRender();
+- (void)tick { 
+    gfxTick();
+}
+
+- (void)inits { 
+    gfxInit("ios");
 }
 
 @end

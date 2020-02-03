@@ -3,7 +3,7 @@ project (render C CXX)
 enable_testing()
 
 set(ROOT_FOLDER ../../../)
-include_directories(${ROOT_FOLDER}/runtime/)
+include_directories(${ROOT_FOLDER}/runtime/  ${ROOT_FOLDER}/platformDependent/ios/ )
 
 MESSAGE( STATUS "CMAKE_CXX_FLAGS: " ${CMAKE_CXX_FLAGS} )
 
@@ -40,11 +40,11 @@ check_type_size(time_t SIZEOF_TIME_T)
 
 # Source files
 #set(SOURCES core.cpp coreIOS.mm)
-file(GLOB SOURCES GfxIOS.mm ${ROOT_FOLDER}/runtime/*/*.cpp)
+file(GLOB SOURCES GfxIOS.mm ${ROOT_FOLDER}/runtime/*/*.cpp ${ROOT_FOLDER}/platformDependent/ios/*.cpp)
 
 # Headers
 #set(HEADERS core.h coreIOS.h)
-file(GLOB HEADERS GfxIOS.h ${ROOT_FOLDER}/runtime/*/*.h)
+file(GLOB HEADERS GfxIOS.h ${ROOT_FOLDER}/runtime/*/*.h ${ROOT_FOLDER}/platformDependent/ios/*.h)
 
 # Library
 if(BUILD_SHARED)
