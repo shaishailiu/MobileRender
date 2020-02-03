@@ -82,11 +82,10 @@
                               _colorBufferRender);
     
     [_gfxIOS tick];
-    glClearColor(1.0, 0.25, 0.25, 1.0f);
+    //glClearColor(1.0, 0.25, 0.25, 1.0f);
     //NSString* str = [_gfxIOS getHelloWorld];
     //NSLog(@"%@",str);
-
-    glClear(GL_COLOR_BUFFER_BIT);
+    //glClear(GL_COLOR_BUFFER_BIT);
 
     [_eaglContext presentRenderbuffer:GL_RENDERBUFFER];
 }

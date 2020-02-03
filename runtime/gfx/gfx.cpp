@@ -18,7 +18,8 @@ void gfxResize(int w, int h) {
     printf("engin resize : %d,%d \n", w, h);
 }
 void gfxTick() {
-
+    glClearColor(1.0f, 0.25f, 1.25f, 1.0f);
+    glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 }
 
 
